@@ -5,8 +5,7 @@ Project uses gradle so you will need it (https://gradle.org/). After having inst
 1) gradle run
 2) Then follow instructions in interactive terminal
 
-
-#Tests: 
+## Tests: 
 ### Union Find
 Union find API works as follows:
 1) Upon creating the object, an algorithm and the number of elements will be requested.
