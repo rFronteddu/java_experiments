@@ -12,10 +12,9 @@
  * M is the union-find operations on a set of N objects
  */
 
-
 package rfronteddu.java_experiments.algorithms.unionfind;
 
-public class CompressedWeightedUnion extends  WeightedQuickUnion
+class CompressedWeightedUnion extends  WeightedQuickUnion
 {
     @Override int findRoot (int i) {
         while (i != array[i]) {

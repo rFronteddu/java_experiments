@@ -3,7 +3,7 @@
  * @version 1.0
  * @since   2019-11-16
  *
- *
+ * Supported types of Union Find, see classes in union find package for more information
  */
 
 package rfronteddu.java_experiments.algorithms.unionfind;

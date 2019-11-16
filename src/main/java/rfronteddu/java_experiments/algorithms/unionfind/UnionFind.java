@@ -12,6 +12,8 @@
  * Assumption: N (number of objects) can be huge, M (number of operations) can be huge, find and union commands may be intermixed
  *
  * Component: List of nodes connected to each other
+ *
+ * Useful in Dynamic connectivity or percolate calculation.
  */
 
 package rfronteddu.java_experiments.algorithms.unionfind;
@@ -58,8 +60,8 @@ public class UnionFind
 
     /**
      * Are p and q in the same component?
-     * @param p p uuid
-     * @param q q uuid
+     * @param p element
+     * @param q element
      * @return true if p and q are connected
      */
     private boolean areConnected (int p, int q) {

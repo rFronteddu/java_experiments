@@ -22,7 +22,7 @@ package rfronteddu.java_experiments.algorithms.unionfind;
 
 public class QuickUnion implements UnionFindInterface
 {
-    protected int[] array;
+    int[] array;
     // created these two variables to maintain interface compatibility, must call are connected before union!
     int pRoot;
     int qRoot;
