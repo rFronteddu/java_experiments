@@ -26,12 +26,25 @@ public class WeightedQuickUnion extends QuickUnion
 {
     // count number of objects in the tree rooted at i.
     private int[] size;
+    private boolean fullyConnected = false;
     // < ------------------------------------------------------------------------------- >
 
     @Override public boolean init (int N) {
         super.init (N);
         size = new int[N];
+        // Initialize array so we don't have to check every time for initialization
+        for (int i = 0; i < array.length; i++) {
+            size[i] = 1;
+        }
         return true;
+    }
+
+    /**
+     * Used in the social network 1 exercise
+     * @return true if the nodes are all connected (in that case they all have the same root)
+     */
+    public boolean isFullyConnected() {
+        return fullyConnected;
     }
 
     @Override public void union (int p, int q) {
@@ -42,9 +55,11 @@ public class WeightedQuickUnion extends QuickUnion
         if (size[pRoot] < size[qRoot]) {
             array[pRoot]    = qRoot;
             size[qRoot]     += size[pRoot];
+            fullyConnected = size[qRoot] == size.length;
         } else {
             array[qRoot]    = pRoot;
             size[pRoot]     += size[qRoot];
+            fullyConnected = size[pRoot] == size.length;
         }
     }
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * @author  Roberto Fronteddu
  * @version 1.0
  * @since   2019-11-16
@@ -14,9 +14,9 @@ import rfronteddu.java_experiments.algorithms.unionfind.Algorithm;
 
 public class Prompt
 {
-    public static Experiment selectExperiment() {
-        TextIO textIO = TextIoFactory.getTextIO();
-        return textIO.newEnumInputReader (Experiment.class).read ("  Select experiment");
+    public static void enterNumberToTerminate () {
+        TextIO textIO = TextIoFactory.getTextIO ();
+        textIO.newByteInputReader().read ("Enter a number to terminate");
     }
 
     public static int getNumberOfElements() {
@@ -32,13 +32,18 @@ public class Prompt
         return a;
     }
 
+    public static Algorithm getUnionFindAlgorithm() {
+        TextIO textIO = TextIoFactory.getTextIO ();
+        return textIO.newEnumInputReader (Algorithm.class).read ("Select algorithm:");
+    }
+
     public static boolean keepGoing() {
         TextIO textIO = TextIoFactory.getTextIO();
         return textIO.newBooleanInputReader().read ("Keep Going?");
     }
 
-    public static Algorithm getUnionFindAlgorithm() {
-        TextIO textIO = TextIoFactory.getTextIO ();
-        return textIO.newEnumInputReader (Algorithm.class).read ("Select algorithm:");
+    public static Experiment selectExperiment() {
+        TextIO textIO = TextIoFactory.getTextIO();
+        return textIO.newEnumInputReader (Experiment.class).read ("  Select experiment");
     }
 }

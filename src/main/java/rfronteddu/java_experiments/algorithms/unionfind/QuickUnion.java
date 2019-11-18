@@ -22,11 +22,17 @@ package rfronteddu.java_experiments.algorithms.unionfind;
 
 public class QuickUnion implements UnionFindInterface
 {
-    int[] array;
+    protected int[] array;
     // created these two variables to maintain interface compatibility, must call are connected before union!
     int pRoot;
     int qRoot;
     // < ------------------------------------------------------------------------------- >
+
+    @Override public boolean areConnected (int p, int q) {
+        pRoot = findRoot (p);
+        qRoot = findRoot (q);
+        return pRoot == qRoot;
+    }
 
     @Override public boolean init (int N) {
         if (N <= 0) {
@@ -42,12 +48,6 @@ public class QuickUnion implements UnionFindInterface
 
     @Override public void union (int p, int q) {
         array[pRoot] = qRoot;
-    }
-
-    @Override public boolean areConnected (int p, int q) {
-        pRoot = findRoot (p);
-        qRoot = findRoot (q);
-        return pRoot == qRoot;
     }
 
     // ##################################################################################

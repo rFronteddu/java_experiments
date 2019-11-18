@@ -14,9 +14,9 @@
 
 package rfronteddu.java_experiments.algorithms.unionfind;
 
-class CompressedWeightedUnion extends  WeightedQuickUnion
+public class CompressedWeightedUnion extends  WeightedQuickUnion
 {
-    @Override int findRoot (int i) {
+    public @Override int findRoot (int i) {
         while (i != array[i]) {
             // Make every other node in path point to its
             // grandparent (thereby halving path length).
