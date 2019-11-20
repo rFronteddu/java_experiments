@@ -13,5 +13,6 @@ public enum Experiment
 {
     UNION_FIND,
     SOCIAL_NETWORK_1,
-    CANONICAL_UNION_FIND
+    CANONICAL_UNION_FIND,
+    PERCOLATION
 }

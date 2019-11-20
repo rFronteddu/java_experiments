@@ -3,7 +3,7 @@
  * @version 1.0
  * @since   2019-11-16
  *
- * A simple application to test a number of algorithms' implementations and to show how I write code.
+ *
  */
 
 package rfronteddu.java_experiments;
@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rfronteddu.java_experiments.algorithms.unionfind.UnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.CanonicalUnionFind;
+import rfronteddu.java_experiments.algorithms.unionfind.questions.Percolation;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.SocialNetwork1;
 import rfronteddu.java_experiments.prompt.Prompt;
 
@@ -35,6 +36,9 @@ public class JAVAExperiments
                 break;
             case CANONICAL_UNION_FIND:
                 canonicalUnionFind();
+                break;
+            case PERCOLATION:
+                percolation();
                 break;
         }
 
@@ -61,6 +65,14 @@ public class JAVAExperiments
             cuf.union (3, 4);
         }
         logger.info ("Largest element: " + cuf.find (1));
+    }
+
+    private static void percolation() {
+        Percolation p = new Percolation (4);
+        long start = System.nanoTime();
+        p.percolateTest();
+        logger.info ("Percolation took: " + (System.nanoTime() - start)+ "ns");
+        p.printStatus();
     }
 
     private static void socialNetwork() {
