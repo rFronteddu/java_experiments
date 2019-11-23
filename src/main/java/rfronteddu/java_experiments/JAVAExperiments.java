@@ -10,13 +10,19 @@ package rfronteddu.java_experiments;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import rfronteddu.java_experiments.algorithms.BitonicSearch;
+import rfronteddu.java_experiments.algorithms.Sum3;
 import rfronteddu.java_experiments.algorithms.unionfind.UnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.CanonicalUnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.Percolation;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.SocialNetwork1;
 import rfronteddu.java_experiments.prompt.Prompt;
+
+import java.time.Duration;
+import java.time.Instant;
 
 public class JAVAExperiments
 {
@@ -40,6 +46,12 @@ public class JAVAExperiments
             case PERCOLATION:
                 percolation();
                 break;
+            case SUM3:
+                sum3();
+                break;
+            case BITONIC_SEARCH:
+                bitonicSearch();
+                break;
         }
 
         Prompt.enterNumberToTerminate();
@@ -48,6 +60,21 @@ public class JAVAExperiments
     }
 
     // ###################################################################################
+
+    private static void bitonicSearch() {
+        int n = Prompt.getSum3MaxElements();
+        BitonicSearch bs = new BitonicSearch (n);
+        for (int i = 0; i < n; i++) {
+            int el = Prompt.getNextEl ("Enter number");
+            bs.addEl (el);
+        }
+        boolean found = bs.search (Prompt.getNextEl ("Enter number to search"));
+        if (found) {
+            logger.info ("Element was found");
+        } else {
+            logger.info ("Element was NOT found");
+        }
+    }
 
     private static void canonicalUnionFind() {
         CanonicalUnionFind cuf = new CanonicalUnionFind();
@@ -68,10 +95,11 @@ public class JAVAExperiments
     }
 
     private static void percolation() {
+        Instant start = Instant.now();
         Percolation p = new Percolation (4);
-        long start = System.nanoTime();
         p.percolateTest();
-        logger.info ("Percolation took: " + (System.nanoTime() - start)+ "ns");
+        Instant finish = Instant.now();
+        logger.info ("Percolation took: " + Duration.between (start, finish).toMillis() + "ms");
         p.printStatus();
     }
 
@@ -83,6 +111,17 @@ public class JAVAExperiments
         } else {
             logger.info ("Full connection was not detected");
         }
+    }
+
+    private static void sum3() {
+        int n = Prompt.getSum3MaxElements();
+        Sum3 sum3 = new Sum3 (n);
+
+        for (int i = 0; i < n; i++) {
+            int el = Prompt.getNextEl ("Enter number");
+            sum3.add (el);
+        }
+        sum3.sum3();
     }
 
     private static void unionFind() {

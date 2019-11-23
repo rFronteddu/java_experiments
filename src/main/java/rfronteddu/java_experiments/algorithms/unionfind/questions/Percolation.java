@@ -98,7 +98,6 @@ public class Percolation
      * @return true if the grid percolates
      */
     public boolean percolates() {
-        logger.info ("VT: {} VB: {}", virtualTopCell.id, virtualBottomCell.id);
         return cwu.areConnected (virtualTopCell.id, virtualBottomCell.id);
     }
 

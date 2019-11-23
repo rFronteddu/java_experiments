@@ -14,9 +14,14 @@ import rfronteddu.java_experiments.algorithms.unionfind.Algorithm;
 
 public class Prompt
 {
-    public static void enterNumberToTerminate () {
+    public static void enterNumberToTerminate() {
         TextIO textIO = TextIoFactory.getTextIO ();
         textIO.newByteInputReader().read ("Enter a number to terminate");
+    }
+
+    public static int getNextEl (String msg) {
+        TextIO textIO = TextIoFactory.getTextIO();
+        return textIO.newIntInputReader().read (msg);
     }
 
     public static int getNumberOfElements() {
@@ -30,6 +35,11 @@ public class Prompt
         a[0] = textIO.newIntInputReader().read ("Enter first pair member");
         a[1] = textIO.newIntInputReader().read ("Enter second pair member");
         return a;
+    }
+
+    public static int getSum3MaxElements() {
+        TextIO textIO = TextIoFactory.getTextIO();
+        return textIO.newIntInputReader().read ("Please input max number of elements");
     }
 
     public static Algorithm getUnionFindAlgorithm() {
