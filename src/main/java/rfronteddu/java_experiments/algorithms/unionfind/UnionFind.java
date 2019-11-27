@@ -75,21 +75,23 @@ public class UnionFind
      * if p and q are not yet connected, connect them and print out pair
      * @param p first element
      * @param q second element
+     * @return true if a new connection was added
      */
-    public void unionFind (int p, int q) {
+    public boolean unionFind (int p, int q) {
         if (p >= numberOfElements) {
             logger.error ("p >= N.");
-            return;
+            return false;
         }
 
         if (q >= numberOfElements) {
             logger.error ("q was >= N.");
-            return;
+            return false;
         }
 
         if (!areConnected (p, q)) {
             unionFind.union (p, q);
-            logger.info ("New pair: ({}, {})", p, q);
+            return true;
         }
+        return false;
     }
 }

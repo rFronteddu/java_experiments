@@ -37,7 +37,7 @@ public class Prompt
         return a;
     }
 
-    public static int getSum3MaxElements() {
+    public static int getMaxEl() {
         TextIO textIO = TextIoFactory.getTextIO();
         return textIO.newIntInputReader().read ("Please input max number of elements");
     }
@@ -55,5 +55,9 @@ public class Prompt
     public static Experiment selectExperiment() {
         TextIO textIO = TextIoFactory.getTextIO();
         return textIO.newEnumInputReader (Experiment.class).read ("  Select experiment");
+    }
+
+    public static void println (String msg) {
+        TextIoFactory.getTextIO().getTextTerminal().println (msg);
     }
 }

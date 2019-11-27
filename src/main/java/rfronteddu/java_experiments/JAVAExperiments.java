@@ -23,6 +23,7 @@ import rfronteddu.java_experiments.prompt.Prompt;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.HashSet;
 
 public class JAVAExperiments
 {
@@ -61,19 +62,20 @@ public class JAVAExperiments
 
     // ###################################################################################
 
-    private static void bitonicSearch() {
-        int n = Prompt.getSum3MaxElements();
+    private static boolean bitonicSearch() {
+        int n = Prompt.getMaxEl();
         BitonicSearch bs = new BitonicSearch (n);
+
         for (int i = 0; i < n; i++) {
-            int el = Prompt.getNextEl ("Enter number");
-            bs.addEl (el);
+            bs.add (Prompt.getNextEl ("Enter number"));
         }
         boolean found = bs.search (Prompt.getNextEl ("Enter number to search"));
         if (found) {
-            logger.info ("Element was found");
+            Prompt.println ("Found");
         } else {
-            logger.info ("Element was NOT found");
+            Prompt.println ("NotFound");
         }
+        return found;
     }
 
     private static void canonicalUnionFind() {
@@ -91,7 +93,8 @@ public class JAVAExperiments
         if (!cuf.areConnected (3, 4)) {
             cuf.union (3, 4);
         }
-        logger.info ("Largest element: " + cuf.find (1));
+
+        Prompt.println ("Largest element: " + cuf.find (1));
     }
 
     private static void percolation() {
@@ -99,7 +102,7 @@ public class JAVAExperiments
         Percolation p = new Percolation (4);
         p.percolateTest();
         Instant finish = Instant.now();
-        logger.info ("Percolation took: " + Duration.between (start, finish).toMillis() + "ms");
+        Prompt.println ("Percolation took: " + Duration.between (start, finish).toMillis() + "ms");
         p.printStatus();
     }
 
@@ -107,28 +110,35 @@ public class JAVAExperiments
         SocialNetwork1 socialNetwork1 = new SocialNetwork1();
         long timestamp = socialNetwork1.socialNetworkConnectivity ("testFiles\\social_network_1.txt");
         if (timestamp != -1) {
-            logger.info ("Earliest timestamp: " + timestamp);
+            Prompt.println ("Earliest timestamp: " + timestamp);
         } else {
-            logger.info ("Full connection was not detected");
+            Prompt.println ("Full connection was not detected");
         }
     }
 
     private static void sum3() {
-        int n = Prompt.getSum3MaxElements();
+        int n = Prompt.getMaxEl ();
         Sum3 sum3 = new Sum3 (n);
 
         for (int i = 0; i < n; i++) {
             int el = Prompt.getNextEl ("Enter number");
             sum3.add (el);
         }
-        sum3.sum3();
+        HashSet<String> solutionSet = sum3.sum3();
+        Prompt.println (solutionSet.size() + " solution were found:");
+        for (String s : solutionSet) {
+            Prompt.println (s);
+        }
     }
 
     private static void unionFind() {
         UnionFind uf = new UnionFind (Prompt.getUnionFindAlgorithm(), Prompt.getNumberOfElements());
         do {
             int[] pair = Prompt.getPair();
-            uf.unionFind (pair[0], pair[1]);
+            boolean newPair = uf.unionFind (pair[0], pair[1]);
+            if (newPair) {
+                Prompt.println ("Added new pair: (" + pair[0] + ", " + pair[1] + ")");
+            }
         }  while (Prompt.keepGoing());
     }
 }

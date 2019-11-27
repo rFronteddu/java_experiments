@@ -58,7 +58,7 @@ public class Sum3
     /**
      * Will throw RuntimeException if there are less than 3 elements
      */
-    public void sum3() {
+    public  HashSet<String> sum3() {
         if (index < array.length) {
             throw new RuntimeException ("Tried to call sum3 but there are not enough elements in the array: "
                     + index + " expecting " + array.length);
@@ -90,9 +90,6 @@ public class Sum3
                 }
             }
         }
-        logger.info (solutionSet.size() + " solution were found:");
-        for (String s : solutionSet) {
-            logger.info (s);
-        }
+        return solutionSet;
     }
 }
