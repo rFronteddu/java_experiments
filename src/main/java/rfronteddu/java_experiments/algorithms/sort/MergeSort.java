@@ -3,8 +3,11 @@
  * @version 1.0
  * @since   2019-12-14
  *
- * Recursive and non recursive simple implementations of merge sort.
+ * Other sorts algorithms to know: insertion sort, selection sort
  *
+ * Recursive implementations of merge sort.
+ * It is possible to implement a Bottom Up non recursive version that does a double for where sub
+ * arrays of size from 2 to n are sorted. This is slower than the recursive.
  * Guarantees to sort any array of n items with at most n lg n compares. It can also be proven that
  * any compare-based sorting algorithm must make at least !n lg n compares in the worst case.
  *
@@ -33,6 +36,24 @@
  * 2) Recursively sort each half
  * 3) Merge two halves
  *
+ * Merge sort can be modeled as a decision tree -> any compare-based sorting algorithm
+ * must use at least n log n compares in the worst case.
+ *
+ * Proof:
+ * Worst case dictated by the height h of a decision tree
+ * A binary tree of height h has at most 2^h leaves -> no more than 2^h leaves
+ * there are n! differing ordering                  -> at least n! leaves
+ *
+ * 2^h >= # leaves >= n!
+ * h >= lg(n!) ~ n lg n (from stirling)
+ *
+ * h is the worst number of compares h >= n lg n
+ *
+ * Upper and lower bound are the same -> merge sort is an optimal algorithm for decision trees with respect to number of compares
+ * it is not optimal with respect to space usage.
+ *
+ * Note that a stable sort preserves the relative order of items with equal keys (insertion sort and merge sort are stable,
+ * selection and shellsort are not).
  */
 
 package rfronteddu.java_experiments.algorithms.sort;
@@ -49,14 +70,6 @@ public class MergeSort
         int[] aux = new int[a.length];
         System.arraycopy (a, 0, aux, 0, a.length);
         sort (a, aux, 0, a.length - 1);
-    }
-
-    /**
-     * Slower bottom up non recursive version of merge sort
-     * @param a array of len a.length to order
-     */
-    public static void nonRecursiveSort (int[] a) {
-
     }
 
     // ##################################################################################
