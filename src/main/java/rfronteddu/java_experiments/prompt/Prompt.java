@@ -60,4 +60,10 @@ public class Prompt
     public static void println (String msg) {
         TextIoFactory.getTextIO().getTextTerminal().println (msg);
     }
+
+    public static boolean getImproved () {
+        TextIO textIO = TextIoFactory.getTextIO();
+        return textIO.newBooleanInputReader ().read ("  Do you want the improved version?");
+
+    }
 }

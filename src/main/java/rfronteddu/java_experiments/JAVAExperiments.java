@@ -56,10 +56,9 @@ public class JAVAExperiments
                 bitonicSearch();
                 break;
             case MERGE_SORT:
-                mergeSort();
+                mergeSort (Prompt.getImproved());
                 break;
         }
-
         Prompt.enterNumberToTerminate();
         logger.debug ("Termination requested");
         System.exit (0);
@@ -101,11 +100,14 @@ public class JAVAExperiments
         Prompt.println ("Largest element: " + cuf.find (1));
     }
 
-    private static void mergeSort() {
-        int[] array = {8, 7 ,6, 10, 1, 1, 5, 4};
-        logger.info ("Before sort:     " + Arrays.toString (array));
-        MergeSort.sort (array);
-        logger.info ("After  sort:     " + Arrays.toString (array));
+    private static void mergeSort (boolean improved) {
+        Instant start = Instant.now();
+        int[] array = {8, 7 ,6, 10, 1, 1, 5, 4, 10, 23, 21, 18, 16};
+        Prompt.println (" Before sort:    " + Arrays.toString (array));
+        MergeSort.sort (array, improved);
+        Prompt.println (" After sort:     " + Arrays.toString (array));
+        Instant finish = Instant.now();
+        Prompt.println (" Sort took: " + Duration.between (start, finish).toMillis() + "ms");
     }
 
     private static void percolation() {
