@@ -16,5 +16,6 @@ public enum Experiment
     CANONICAL_UNION_FIND,
     PERCOLATION,
     SUM3,
-    BITONIC_SEARCH
+    BITONIC_SEARCH,
+    MERGE_SORT
 }

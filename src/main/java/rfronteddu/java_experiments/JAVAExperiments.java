@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rfronteddu.java_experiments.algorithms.BitonicSearch;
 import rfronteddu.java_experiments.algorithms.Sum3;
+import rfronteddu.java_experiments.algorithms.sort.MergeSort;
 import rfronteddu.java_experiments.algorithms.unionfind.UnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.CanonicalUnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.Percolation;
@@ -23,6 +24,7 @@ import rfronteddu.java_experiments.prompt.Prompt;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class JAVAExperiments
@@ -53,6 +55,9 @@ public class JAVAExperiments
             case BITONIC_SEARCH:
                 bitonicSearch();
                 break;
+            case MERGE_SORT:
+                mergeSort();
+                break;
         }
 
         Prompt.enterNumberToTerminate();
@@ -62,7 +67,7 @@ public class JAVAExperiments
 
     // ###################################################################################
 
-    private static boolean bitonicSearch() {
+    private static void bitonicSearch() {
         int n = Prompt.getMaxEl();
         BitonicSearch bs = new BitonicSearch (n);
 
@@ -73,9 +78,8 @@ public class JAVAExperiments
         if (found) {
             Prompt.println ("Found");
         } else {
-            Prompt.println ("NotFound");
+            Prompt.println ("Not Found");
         }
-        return found;
     }
 
     private static void canonicalUnionFind() {
@@ -95,6 +99,13 @@ public class JAVAExperiments
         }
 
         Prompt.println ("Largest element: " + cuf.find (1));
+    }
+
+    private static void mergeSort() {
+        int[] array = {8, 7 ,6, 10, 1, 1, 5, 4};
+        logger.info ("Before sort:     " + Arrays.toString (array));
+        MergeSort.sort (array);
+        logger.info ("After  sort:     " + Arrays.toString (array));
     }
 
     private static void percolation() {

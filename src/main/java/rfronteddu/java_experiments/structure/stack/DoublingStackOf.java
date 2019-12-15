@@ -8,7 +8,7 @@
  * N + (2 + 4 + 8 + ... + N/2 + N) ~ 3N instead of N * N (each resize, copy each element)
  *
  * Resize (decrease) we cannot use the same method
- * because in the worst case if we push pop push pop we take N each time
+ * because in the worst case if we pop push pop just after increasing the size it takes N each time
  * so we resize when array is one quarter full
  *
  * Best and average are O(1) while worst cases are O(N) for both push and pop.

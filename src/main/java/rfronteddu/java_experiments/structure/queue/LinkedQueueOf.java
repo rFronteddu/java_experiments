@@ -3,7 +3,8 @@
  * @version 1.0
  * @since   2019-11-25
  *
- * Simple implementation of a generic linked list
+ * Simple implementation of a generic linked list.
+ * Takes constant time in worst case but uses extra time and space to deal with the links.
  * FIFO.
  */
 
