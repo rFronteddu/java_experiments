@@ -20,12 +20,16 @@ import rfronteddu.java_experiments.algorithms.unionfind.UnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.CanonicalUnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.Percolation;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.SocialNetwork1;
+import rfronteddu.java_experiments.problems.lpd.LinePatternsDetector;
+import rfronteddu.java_experiments.problems.lpd.Point;
 import rfronteddu.java_experiments.prompt.Prompt;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 public class JAVAExperiments
 {
@@ -56,7 +60,10 @@ public class JAVAExperiments
                 bitonicSearch();
                 break;
             case MERGE_SORT:
-                mergeSort (Prompt.getImproved());
+                mergeSort ();
+                break;
+            case COLLINEAR_DETECTOR:
+                linePatternDetector ();
                 break;
         }
         Prompt.enterNumberToTerminate();
@@ -65,6 +72,29 @@ public class JAVAExperiments
     }
 
     // ###################################################################################
+
+    /**
+     * Not that for simplicity, it is not checked if more than 4 nodes sit on the same line
+     * so that case should be avoided
+     */
+    private static void linePatternDetector() {
+        LinePatternsDetector linePatternsDetector = new LinePatternsDetector ();
+        linePatternsDetector.init (1000, 1000);
+        List<Point> points = new LinkedList<> ();
+        points.add (new Point (100, 110));
+        points.add (new Point (100, 150));
+        points.add (new Point (100, 120));
+        points.add (new Point (100, 105));
+        points.add (new Point (210, 100));
+        points.add (new Point (220, 100));
+        points.add (new Point (230, 100));
+        points.add (new Point (300, 100));
+        boolean bruteForce = Prompt.getBoolean ("Brute force Implementation?");
+        long start = System.nanoTime ();
+        linePatternsDetector.collinearDetector (points, bruteForce);
+        long delta = System.nanoTime () - start;
+        logger.info ("Took {} ns", delta);
+    }
 
     private static void bitonicSearch() {
         int n = Prompt.getMaxEl();
@@ -100,11 +130,11 @@ public class JAVAExperiments
         Prompt.println ("Largest element: " + cuf.find (1));
     }
 
-    private static void mergeSort (boolean improved) {
+    private static void mergeSort () {
         Instant start = Instant.now();
         int[] array = {8, 7 ,6, 10, 1, 1, 5, 4, 10, 23, 21, 18, 16};
         Prompt.println (" Before sort:    " + Arrays.toString (array));
-        MergeSort.sort (array, improved);
+        MergeSort.sort (array, Prompt.getBoolean (" Do you want the improved version?"));
         Prompt.println (" After sort:     " + Arrays.toString (array));
         Instant finish = Instant.now();
         Prompt.println (" Sort took: " + Duration.between (start, finish).toMillis() + "ms");

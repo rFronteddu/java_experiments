@@ -17,5 +17,5 @@ public enum Experiment
     PERCOLATION,
     SUM3,
     BITONIC_SEARCH,
-    MERGE_SORT,
+    MERGE_SORT, COLLINEAR_DETECTOR
 }
