@@ -1,8 +1,5 @@
 package rfronteddu.java_experiments.problems.lpd;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -12,7 +9,6 @@ import java.util.LinkedList;
  */
 public class FastCollinearPoints implements CollinearPoints
 {
-    private static final Logger logger = LoggerFactory.getLogger (FastCollinearPoints.class);
     private LinkedList<Line> outputList = new LinkedList<> ();
     // < ---------------------------------------------------- >
 
