@@ -1,7 +1,7 @@
 package rfronteddu.java_experiments.algorithms.combinatorial;
 
 import org.slf4j.LoggerFactory;
-import rfronteddu.java_experiments.problems.lpd.Point;
+import rfronteddu.java_experiments.problem.collinear.Point;
 
 import java.util.Arrays;
 import java.util.LinkedList;

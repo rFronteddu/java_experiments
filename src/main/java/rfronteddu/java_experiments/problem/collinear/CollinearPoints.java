@@ -1,4 +1,4 @@
-package rfronteddu.java_experiments.problems.lpd;
+package rfronteddu.java_experiments.problem.collinear;
 
 import java.util.LinkedList;
 

@@ -6,7 +6,7 @@
  * This class extract from a list of collinear points the biggest segments.
  */
 
-package rfronteddu.java_experiments.problems.lpd;
+package rfronteddu.java_experiments.problem.collinear;
 
 import javax.swing.*;
 import java.util.LinkedList;

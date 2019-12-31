@@ -20,8 +20,8 @@ import rfronteddu.java_experiments.algorithms.unionfind.UnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.CanonicalUnionFind;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.Percolation;
 import rfronteddu.java_experiments.algorithms.unionfind.questions.SocialNetwork1;
-import rfronteddu.java_experiments.problems.lpd.LinePatternsDetector;
-import rfronteddu.java_experiments.problems.lpd.Point;
+import rfronteddu.java_experiments.problem.collinear.LinePatternsDetector;
+import rfronteddu.java_experiments.problem.collinear.Point;
 import rfronteddu.java_experiments.prompt.Prompt;
 
 import java.time.Duration;

@@ -1,4 +1,4 @@
-package rfronteddu.java_experiments.problems.lpd;
+package rfronteddu.java_experiments.problem.collinear;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
