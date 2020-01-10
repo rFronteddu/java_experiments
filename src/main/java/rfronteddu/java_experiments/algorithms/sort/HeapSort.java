@@ -33,7 +33,7 @@ public class HeapSort
         // second pass extract the max one at a time and leave it in the array instead of nulling out
         while (numEl > 0) {
             numEl--;
-            exchange (a, 0, numEl);
+            SortUtil.exchange (a, 0, numEl);
             sink (a, 0, numEl);
         }
     }
@@ -50,14 +50,8 @@ public class HeapSort
                 break;
             }
 
-            exchange (a, k, j);
+            SortUtil.exchange (a, k, j);
             k = j;
         }
-    }
-
-    private static void exchange (Comparable[] a, int i, int j) {
-        Comparable tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
     }
 }
