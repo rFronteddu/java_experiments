@@ -1,4 +1,4 @@
-package rfronteddu.java_experiments.structure.keyvalue;
+package rfronteddu.java_experiments.structure.tree;
 
 /**
  * a BST is a binary tree in symmetric order
