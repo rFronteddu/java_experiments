@@ -16,8 +16,6 @@
 
 package rfronteddu.java_experiments.structure.stack;
 
-import java.lang.reflect.Array;
-
 public class DoublingStackOf <Item> implements Stack<Item>
 {
     private Object[] stack;
